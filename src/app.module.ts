@@ -8,6 +8,7 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { TimeoutInterceptor } from './interceptors/timeout.interceptor';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 @Module({
   imports: [
@@ -59,6 +60,16 @@ import { TimeoutInterceptor } from './interceptors/timeout.interceptor';
     //   },
     //   // inject: [ConfigService],
     // }
+
+    {
+      provide: ModuleType.googleai,
+     useFactory() {
+      const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+      return model
+     },
+    }
   ],
 })
 export class AppModule {}
