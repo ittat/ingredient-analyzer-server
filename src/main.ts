@@ -10,6 +10,10 @@ async function bootstrap() {
   // server.keepAliveTimeout = 30000
   // Limit the amount of time the parser will wait to receive the complete HTTP headers
   // server.headersTimeout = 5 * 60 * 1000
-  await app.listen(process.env.PROT);
+
+  console.log(
+    `🚀 Application is running on: http://localhost:${process.env.PORT}`);
+  
+  await app.listen(process.env.PORT);
 }
 bootstrap();
