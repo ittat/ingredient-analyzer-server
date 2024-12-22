@@ -131,6 +131,8 @@ export class AppController {
             - 如果用户提供是食品，有可能存在营养表，也需要分析一下
             `,
     ]);
-    console.log(result.response.text());
+    // console.log(result.response.text());
+
+    return R.ok(result.response.text())
   }
 }
