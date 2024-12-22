@@ -16,6 +16,11 @@ export class AppController {
     @Inject(ModuleType.openai) private readonly openai: OpenAI,
   ) {}
 
+
+  @Get("")
+  hello() {
+  return R.ok("hello world")
+  }
   
   @Post('analyze')
   @UseInterceptors(FileInterceptor('image'))
